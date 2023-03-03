@@ -51,17 +51,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-
 function displayScore() {
   updateScore.innerHTML = `Robo: ${compWins} Human:${playerWins}`;
   if (gameOver()) {
     if (playerWins === 5) {
-      reset();
       updateText.innerHTML = "Player wins";
       btn.style.display = "block";
     }
     if (compWins === 5) {
-      reset();
       updateText.innerHTML = "Robo Wins";
       btn.style.display = "block";
     }
@@ -69,7 +66,12 @@ function displayScore() {
 }
 
 function gameOver() {
-  return playerWins === 5 || compWins === 5;
+  if (playerWins === 5 || compWins === 5) {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = true;
+    }
+    return true;
+  }
 }
 
 function reset() {
@@ -78,9 +80,15 @@ function reset() {
 }
 
 function disappear() {
+  reset();
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = false;
+  }
   btn.style.display = "none";
   updateText.innerText = "Choose Your Option!";
   updateScore.innerHTML = "";
 }
 btn.addEventListener("click", disappear);
 clickListener();
+
+//when you click on new target, the restart button doesn't disappear

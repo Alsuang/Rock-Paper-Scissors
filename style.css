@@ -25,6 +25,8 @@ header {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+
   
 }
 .scissors {
@@ -34,6 +36,8 @@ header {
   background-repeat: no-repeat;
   
 }
+
+
 
 .paper {
   background-image: url(images/paper.png);
@@ -52,12 +56,18 @@ display: inline-block;
 width: 200px;
 height: 200px;
 margin: 10px;
-background-color: white;
+background-color: burlywood;
+transition-duration: 0.6s;
+
+
 
 }
 
 .choice:hover{
   cursor: pointer;
+  background-color: lightyellow;
+  transform: translate3d(5px, -2px, 0);
+
 }
 img {
   width: 200px;
@@ -92,6 +102,7 @@ img:hover {
   text-decoration: none;
   margin-top: 50px;
   display: none;
+  cursor: pointer;
   
   
   font-size: 16px;
