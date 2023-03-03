@@ -15,10 +15,13 @@ let btn = document.querySelector(".restart");
 function clickListener() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function (event) {
+
       let playerSelection = this.value;
       playRound(playerSelection, getComputerChoice());
       displayScore();
+   
     });
+    
   }
 }
 
@@ -38,16 +41,16 @@ function playRound(playerSelection, computerSelection) {
     return (updateText.innerHTML = "Paper beats rock. You win");
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
     compWins++;
-    return (updateText.innerHTML = "Scissors beats paper. You lose");
+    return updateText.innerHTML = "Scissors beats paper. You lose";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerWins++;
-    return (updateText.innerHTML = "Scissors beats paper. You win");
+    return updateText.innerHTML = "Scissors beats paper. You win";
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
     compWins++;
-    return (updateText.innerHTML = "Rock beats scissors. You lose");
+    return updateText.innerHTML = "Rock beats scissors. You lose";
   } else {
     tie = `Tie. Both players chose ${playerSelection}.`;
-    return (updateText.innerHTML = tie);
+    return updateText.innerHTML = tie;
   }
 }
 
@@ -57,32 +60,44 @@ function displayScore() {
     if (playerWins === 5) {
       updateText.innerHTML = "Player wins";
       btn.style.display = "block";
+      
     }
     if (compWins === 5) {
       updateText.innerHTML = "Robo Wins";
       btn.style.display = "block";
+      
     }
-  }
+    
+    
+}
 }
 
 function gameOver() {
+
   if (playerWins === 5 || compWins === 5) {
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].disabled = true;
     }
     return true;
   }
+
+
 }
 
 function reset() {
   playerWins = 0;
   compWins = 0;
+  
+
 }
 
 function disappear() {
+
+
   reset();
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = false;
+  buttons[i].disabled = false;
+
   }
   btn.style.display = "none";
   updateText.innerText = "Choose Your Option!";
