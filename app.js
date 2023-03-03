@@ -54,7 +54,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-
 function displayScore() {
   updateScore.innerHTML = `Robo: ${compWins} Human:${playerWins}`;
   if (gameOver()) {
@@ -74,13 +73,15 @@ function displayScore() {
 }
 
 function gameOver() {
- if (playerWins === 5 || compWins === 5) {
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = true;
+
+  if (playerWins === 5 || compWins === 5) {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = true;
+    }
+    return true;
   }
-    return true
-  }
- 
+
+
 }
 
 function reset() {
@@ -92,9 +93,11 @@ function reset() {
 
 function disappear() {
 
+
   reset();
   for (let i = 0; i < buttons.length; i++) {
   buttons[i].disabled = false;
+
   }
   btn.style.display = "none";
   updateText.innerText = "Choose Your Option!";
